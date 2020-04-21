@@ -24,16 +24,15 @@ nota_media_por_filme = avaliacoes.groupby("filmeId")["nota"].mean()
 ###--------------------------------------------------------------------------------------------###
 
 filmes_com_media = filmes.join(nota_media_por_filme, on="filmeId")
-#print("Exibir novo DataFrame incluindo filmes com média:")
-#print(filmes_com_media.head())
 
 ###Verificar melhor, ainda nao funcionou
-# filmes_sem_nota = filmes_com_media['nota'].isnull
-# print("Filmes sem nota")
-# print(filmes_sem_nota)
-# print("Resolução")
-# print(filmes_com_media[filmes_sem_nota])
+print("qtd de Filmes sem nota")
+print(filmes_com_media['nota'].isnull().value_counts())
 
+print(filmes_com_media["nota"].isnull)
+
+# print("filmes sem avaliação")
+# print(filmes_com_media[filmes_sem_avaliacao])
 
 ###--------------------------------------------------------------------------------------------###
 #Desafio 2 do Guilherme Silveira
@@ -81,4 +80,10 @@ print(total_filmes_por_genero)
 #Desafio 7 do Guilherme Silveira
 #Plotar o gráfico de aparições de cada genero. Pode ser um gráfico de tipo igual a barra.
 ###--------------------------------------------------------------------------------------------###
-total_filmes_por_genero.sort_values(ascending=False).plot(kind='bar', figsize=(16, 6))
+total_filmes_por_genero.sort_values(ascending=False)
+plt.bar(total_filmes_por_genero.index, total_filmes_por_genero.values, color='blue')
+sns.set()
+plt.xlabel('Generos')
+plt.ylabel('Quantidade')
+plt.title("Quantidade de Generos por Filme")
+plt.show()
