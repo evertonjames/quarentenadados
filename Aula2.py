@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 #Configuracao Global
 sns.set_style("whitegrid")
+pd.options.display.float_format = '{:,.2f}'.format
 
 filmes = pd.read_csv("https://raw.githubusercontent.com/alura-cursos/introducao-a-data-science/master/aula0/ml-latest-small/movies.csv")
 # Filmes é um DataFrame
